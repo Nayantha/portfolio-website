@@ -1,0 +1,219 @@
+@import "reset";
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+
+  .logo {
+    max-width: 100px;
+  }
+
+  nav.nav {
+    position: fixed;
+  }
+}
+
+.intro__img {
+  box-shadow: $bs;
+}
+
+section {
+
+  .section__title {
+    &.section__title--intro {
+      font-weight: $ff-regular;
+
+      strong {
+        display: block;
+      }
+    }
+  }
+
+  .section__subtitle {
+    font-size: var(--fs-h3);
+
+    &:is(.section__subtitle--intro,.section__subtitle--about) {
+      padding: .25em 1em;
+      background: $clr-accent;
+      font-family: $ff-secondary;
+      margin-bottom: 1em;
+    }
+
+  }
+
+  &.intro {
+    position: relative;
+
+    @media (min-width: 600px) {
+      display: grid;
+      width: min-content;
+      margin: 0 auto;
+      grid-column-gap: 1em;
+      grid-template-areas:
+              "img title"
+              "img subtitle";
+      grid-template-columns: min-content max-content;
+    }
+
+    .intro__img {
+      position: relative;
+      grid-area: img;
+      min-width: 250px;
+      z-index: 2;
+    }
+
+    .section__subtitle--intro {
+      align-self: start;
+      grid-column: -1 / 1;
+      grid-row: 2;
+      text-align: right;
+      position: relative;
+      left: -1.5em;
+      width: calc(100% + 1.5em);
+      z-index: -1;
+    }
+  }
+
+}
+
+.my-services {
+  background-color: $clr-dark;
+  background-image: url("../images/work-bg.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  color: $clr-light;
+  text-align: center;
+}
+
+.section__title--services {
+  color: $clr-accent;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 2em;
+    height: 1px;
+    margin: .5em auto 1em;
+    background: $clr-light;
+    opacity: 0.25;
+  }
+}
+
+.service {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services {
+  margin-bottom: 4em;
+}
+
+.btn {
+  background: $clr-accent;
+  display: inline-block;
+  padding: .5em 2.5em;
+  color: $clr-dark;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: .8em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  transition: transform 200ms ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 800px) {
+  .services {
+    display: flex;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+  .services + .services {
+    margin-left: 2em;
+  }
+}
+
+.about-me {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .about-me__img {
+    box-shadow: $bs;
+  }
+
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas: "title image"
+    "subtitle image"
+    "text image";
+    grid-column-gap: 2em;
+
+    .section__title--about {
+      grid-area: title;
+    }
+    .section__subtitle--about {
+      grid-area: subtitle;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      position: relative;
+      left: -1em;
+      width: calc(100% + 2em);
+      padding-left: 1em;
+      padding-right: calc(200px + 4em);
+      z-index: -1;
+    }
+
+    .about-me__img {
+      grid-area: image;
+    }
+  }
+}
+
+.my-work {
+  background: $clr-dark;
+  color: $clr-light;
+  text-align: center;
+
+  .section__subtitle--work {
+    color: $clr-accent;
+    font-weight: bold;
+    margin-bottom: 2em;
+  }
+
+  .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    .portfolio__item {
+      //background: $clr-accent;
+      overflow: hidden;
+
+      &:focus {
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .portfolio__item:focus .portfolio__img, .portfolio__img:hover {
+      transform: scale(1.2);
+      //opacity: .7;
+    }
+
+    .portfolio__img {
+      transition: transform 750ms cubic-bezier(.5, 0, .5, 1),
+      opacity 250ms linear;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+}

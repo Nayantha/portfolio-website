@@ -1,0 +1,257 @@
+:root {
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+}
+
+@media (min-width: 800px) {
+  :root {
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+}
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background: white;
+  color: black;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+section {
+  padding: 5em 2em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+ul, li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+:focus {
+  outline: 3px solid #16e0bd;
+  outline-offset: 3px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+header .logo {
+  max-width: 100px;
+}
+header nav.nav {
+  position: fixed;
+}
+
+.intro__img {
+  box-shadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+
+section .section__title.section__title--intro {
+  font-weight: 400;
+}
+section .section__title.section__title--intro strong {
+  display: block;
+}
+section .section__subtitle {
+  font-size: var(--fs-h3);
+}
+section .section__subtitle:is(.section__subtitle--intro, .section__subtitle--about) {
+  padding: 0.25em 1em;
+  background: #16e0bd;
+  font-family: "Source code Pro", monospace;
+  margin-bottom: 1em;
+}
+section.intro {
+  position: relative;
+}
+@media (min-width: 600px) {
+  section.intro {
+    display: grid;
+    width: min-content;
+    margin: 0 auto;
+    grid-column-gap: 1em;
+    grid-template-areas: "img title" "img subtitle";
+    grid-template-columns: min-content max-content;
+  }
+}
+section.intro .intro__img {
+  position: relative;
+  grid-area: img;
+  min-width: 250px;
+  z-index: 2;
+}
+section.intro .section__subtitle--intro {
+  align-self: start;
+  grid-column: -1/1;
+  grid-row: 2;
+  text-align: right;
+  position: relative;
+  left: -1.5em;
+  width: calc(100% + 1.5em);
+  z-index: -1;
+}
+
+.my-services {
+  background-color: black;
+  background-image: url("../images/work-bg.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.section__title--services {
+  color: #16e0bd;
+  position: relative;
+}
+.section__title--services::after {
+  content: "";
+  display: block;
+  width: 2em;
+  height: 1px;
+  margin: 0.5em auto 1em;
+  background: white;
+  opacity: 0.25;
+}
+
+.service {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services {
+  margin-bottom: 4em;
+}
+
+.btn {
+  background: #16e0bd;
+  display: inline-block;
+  padding: 0.5em 2.5em;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  transition: transform 200ms ease-in-out;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 800px) {
+  .services {
+    display: flex;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+  .services + .services {
+    margin-left: 2em;
+  }
+}
+.about-me {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.about-me .about-me__img {
+  box-shadow: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25), 0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+@media (min-width: 600px) {
+  .about-me {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas: "title image" "subtitle image" "text image";
+    grid-column-gap: 2em;
+  }
+  .about-me .section__title--about {
+    grid-area: title;
+  }
+  .about-me .section__subtitle--about {
+    grid-area: subtitle;
+    grid-column: 1/-1;
+    grid-row: 2;
+    position: relative;
+    left: -1em;
+    width: calc(100% + 2em);
+    padding-left: 1em;
+    padding-right: calc(200px + 4em);
+    z-index: -1;
+  }
+  .about-me .about-me__img {
+    grid-area: image;
+  }
+}
+
+.my-work {
+  background: black;
+  color: white;
+  text-align: center;
+}
+.my-work .section__subtitle--work {
+  color: #16e0bd;
+  font-weight: bold;
+  margin-bottom: 2em;
+}
+.my-work .portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.my-work .portfolio .portfolio__item {
+  overflow: hidden;
+}
+.my-work .portfolio .portfolio__item:focus {
+  position: relative;
+  z-index: 2;
+}
+.my-work .portfolio .portfolio__item:focus .portfolio__img, .my-work .portfolio .portfolio__img:hover {
+  transform: scale(1.2);
+}
+.my-work .portfolio .portfolio__img {
+  transition: transform 750ms cubic-bezier(0.5, 0, 0.5, 1), opacity 250ms linear;
+}
+.my-work .portfolio img {
+  height: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */
